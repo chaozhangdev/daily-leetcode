@@ -3,37 +3,18 @@
  * @param {string} num2
  * @return {string}
  */
- var addStrings = function(num1, num2) {
-  let buffer = 0
-  let sum = ''
-  while (num1 !== '' && num2 !=='') {
-      let tempSum = Number(num1.slice(-1)) + Number(num2.slice(-1)) + buffer
-      if (tempSum >= 10) {
-          sum = tempSum % 10 + sum;
-          buffer = Math.floor(tempSum / 10)
-      } else {
-          sum = tempSum + sum;
-          buffer = 0
-      }
-      num1 = num1.slice(0, -1);
-      num2 = num2.slice(0, -1);
+var addStrings = function (num1, num2) {
+  let result = "";
+  let carry = 0;
+  for (
+    let i = num1.length - 1, j = num2.length - 1;
+    i >= 0 || j >= 0 || carry === 1;
+    i--, j--
+  ) {
+    let x = i >= 0 ? num1.charAt(i) - "0" : 0;
+    let y = j >= 0 ? num2.charAt(j) - "0" : 0;
+    result = ((x + y + carry) % 10) + result;
+    carry = Math.floor((x + y + carry) / 10);
   }
-  if (num1 === '' && num2 === '') {
-      if (buffer !==0) {
-          return buffer + sum
-      } else {
-          return sum
-      }
-  } else if (num1 === '') {
-      sum = (Number(num2.slice(-1)) + buffer) + sum;
-      sum = num2.slice(0, -1) + sum 
-      return sum
-  } else {
-      sum = (Number(num1.slice(-1)) + buffer) + sum;
-      sum = num1.slice(0, -1) + sum
-      return sum 
-  } 
+  return result;
 };
-
-console.log(addStrings("6994", "36"));
-
