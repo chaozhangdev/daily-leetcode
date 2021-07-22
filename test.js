@@ -1,7 +1,6 @@
-let s = {
-  'd': 90,
-  'asd': 2213,
-  'dasd': 999
-}
+let arr = ["okdas", "koasd", "dddd"];
 
-console.log(Object.keys(s).includes('d'))
+for (let el of arr) {
+  let dd = Array.from(el)
+  console.log(dd.sort())
+}
