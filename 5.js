@@ -5,8 +5,7 @@
 
 const longestPalindrome = (s) => {
   const palindromeCheck = (start, end, s) => {
-    if (start < 0 || end > s.length) return;
-    if (s.charAt(start) === s.charAt(end)) {
+    if (start >= 0 && end < s.length && s.charAt(start) === s.charAt(end)) {
       if (end - start + 1 > result.length) result = s.slice(start, end + 1);
       palindromeCheck(start - 1, end + 1, s);
     } else {
